@@ -106,14 +106,13 @@ btn.addEventListener('click',e =>{
 
 
 /*************Deleting  TO DO**************/
+
 list.addEventListener('click',e =>{
-   if (e.target.tagName === 'LI') {
 
-      e.target.remove();
-   }
-
-
+      e.target.parentElement.remove();
+  
 });
+
 
 /************* Fin Deleting  TO DO**************/
 
