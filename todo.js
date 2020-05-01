@@ -5,6 +5,8 @@ const popup = document.querySelector('.popup');
 const gPop = document.querySelector('.popup-wrapper');
 const btn = document.querySelector('.btn');
 const search = document.querySelector('.search input');
+const i=document.querySelector("i");
+const li=document.querySelector("li");
 gPop.style.display = "none";
 
 
@@ -13,8 +15,10 @@ gPop.style.display = "none";
 /* Function pour l'alert et le popup qui va etre afficher (time control)*/
 function start(duree)
 {
-var o=document.getElementById("sp");
+var o = document.getElementById("sp");
+
 if(duree > 0)
+
 {
 o.innerHTML = duree;
 gPop.style.display = "block";
@@ -22,12 +26,13 @@ setTimeout("start("+duree+" -1)", 1000);
 }
 else
 {
-   alert("enter a valid to do");
-o.innerHTML ="Au revoir";
+o.innerHTML = "Au revoir";
 gPop.style.display="none";
 popup.style.visibility ="hidden";
 
 }};
+
+
 
 
 
@@ -50,7 +55,9 @@ function create(){
    div2.innerHTML=html;
    popup.append(div2); 
    
-}
+   
+} 
+
 
 /* Function generation dynamique des TODOS */
 
@@ -94,11 +101,21 @@ onetime(gPop,'click',handler);
 /************* Adding TO DO**************/
 
 //Eventlistner Add TODOS
+
 btn.addEventListener('click',e =>{
    e.preventDefault();
-  
-   generateTemp(addForm.add.value);
-  
+   let numb=3;
+   if (document.querySelector('.popup-content') == null) {
+      create();
+   }
+   if (addForm.add.value == "") {
+      start(numb);
+      popup.style.visibility = "visible";
+   } 
+   else {
+      addf = generateTemp(addForm.add.value);
+     localStorage.getItem(addForm.add.value);
+  }
 });
 
 /************* Fin Adding TO DO**************/
